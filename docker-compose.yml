@@ -1,0 +1,26 @@
+
+version: '3.7'
+
+networks:
+  dev-stack:
+    driver: bridge
+    name: dev-stack
+
+services:
+
+  apollo-server:
+    image: ${DOCKER_REGISTORY}/${DOCKER_REPOSITORY}/apollo-server:latest
+    container_name: ${DOCKER_REGISTORY}-apollo-server
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    tty: true
+    volumes:
+      - ${PWD}:/app
+    ports:
+      - 4000:4000
+    command: ["bash"]
+    env_file:
+      - .env
+    networks:
+      - dev-stack

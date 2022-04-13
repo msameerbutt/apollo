@@ -19,7 +19,7 @@ services:
       - ${PWD}:/app
     ports:
       - 4000:4000
-    command: ["bash"]
+    #command: ["bash"]
     env_file:
       - .env
     networks:
